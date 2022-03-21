@@ -6,6 +6,7 @@ import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
 import memories from './images/memories.jpg';
 import useStyles from "./styles";
+import {ssEvents} from "./api";
 
 function App() {
 
@@ -15,6 +16,30 @@ function App() {
 
     useEffect(() => {
         dispatch(getPosts());
+
+        ssEvents.addEventListener("post", (e) => {
+
+            console.log("UUII UUII UUII")
+            console.log(e.data)
+
+            /*const data = JSON.parse(e.data);
+            if (userId !== data.userId) {
+                toast("New incoming post", {
+                    position: "bottom-right",
+                    autoClose: 1000,
+                    draggable: true,
+                    pauseOnHover: true,
+                    progress: undefined,
+                    hideProgressBar: false,
+                });
+            }
+            setTimeout(() => {
+                appDispatch({ type: GET_POST_STREAM, payload: data });
+            }, 500);*/
+        });
+
+
+
     }, [currentId, dispatch])
 
     return (
